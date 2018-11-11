@@ -1,5 +1,7 @@
-# DiseaseCluster
-==========
+![alt text][logo]
+
+[logo]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/DC-logo-wide.png
+
 ### DiseaseCluster is a pipeline of disease prediction based on transcriptomic clustering
 #### Hackathon Team
 Lead - Mathew Moss
@@ -25,6 +27,9 @@ This project was part of the [2018 Cold Spring Harbor Biological Data Science NC
 
 ## DiseaseCluster Workflow
 
+![alt text][pipeline]
+
+[pipeline]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/PipelineFig2.png "DiseaseCluster Workflow"
 
 The DiseaseCluster pipeline workflow is described in the figure above. First, TCGA transcriptomic data was downloaded and additional bulk RNAseq data will be added to expand disease types analyzed.  Data was coverted from FPKM to TPM, non-protein coding genes wer removed and the data was log transformed. UMAP (uniform manifold approximation and projection) was performed on the expression matrix to reduce the dimensionality to two dimensions in latent space based on gene expression. Clustered data was then overlaid with annotated information about the disease state, including known variants. This map is then visualized by a Boken interactive user interface.
 
@@ -56,10 +61,10 @@ Feel free to contact authors if you need help.
 ## References
 
 ## People/Team
-* *Matthew Moss*, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
-* *Meghan Ferrall-Fairbanks*, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
-* *Benjamin Harris*, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
-* *Gordon Howard Lemmon*, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
-* *Yaxin Xue*, University of Bergen, Bergen, Norwary, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **Matthew Moss**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
+* **Meghan Ferrall-Fairbanks**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
+* **Benjamin Harris**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
+* **Gordon Howard Lemmon**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
+* **Yaxin Xue**, University of Bergen, Bergen, Norwary, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
 
 
