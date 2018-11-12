@@ -41,7 +41,7 @@ Exploratory analysis of converting single cell RNA-seq data to pseudo-bulk RNA-s
 
 ![alt text][pipeline]
 
-[pipeline]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/PipelineFig2.png "DiseaseCluster Workflow"
+[pipeline]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/PipelineFig3.png "DiseaseCluster Workflow"
 
 The DiseaseCluster pipeline workflow is described in the figure above. First, TCGA transcriptomic data was downloaded and additional bulk RNA-seq data will be added to expand disease types analyzed. Data was converted from FPKM to TPM, non-protein coding genes were removed and the data was log transformed. UMAP (uniform manifold approximation and projection) was performed on the expression matrix to reduce the dimensionality to two dimensions in latent space based on gene expression. Clustered data was then overlaid with annotated information about the disease state, including known variants. This map is then visualized by a boken interactive user interface.
 
@@ -112,10 +112,15 @@ McInnes, L, Healy, J, UMAP: Uniform Manifold Approximation and Projection for Di
 Weinstein JN, Collisson EA, Mills GB, Shaw KM et al. The Cancer Genome Atlas Pan-Cancer Analysis Project. Nat Genet 2013 Oct; 45(10):1113-1120. PMID: [24071849](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3919969/)
 
 ## People/Team
-* **Matthew Moss**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
-* **Meghan Ferrall-Fairbanks**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
-* **Benjamin Harris**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
-* **Gordon Howard Lemmon**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
-* **Yaxin Xue**, University of Bergen, Bergen, Norwary, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **[Matthew Moss](https://github.com/mmoss609)**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
+* **[Meghan Ferrall-Fairbanks](https://github.com/mcfefa)**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
+* **[Benjamin Harris](https://github.com/bharris12)**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
+* **[Gordon Howard Lemmon](https://github.com/glemmon)**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
+* **[Yaxin Xue](https://github.com/yxxue)**, University of Bergen, Bergen, Norway, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **[Allissa A. Dillman](https://github.com/allissadillman)**, Genomics Outreach Coordinator at NCBI, Bethesda, MD, USA
 
+![alt text][team]
 
+[team]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/DC-Team.jpg "DiseaseCluster hackathon team"
+
+*(left to right, Ben Harris, Gordon Howard Lemmon, Yaxin Xue, Meghan Ferrall-Fairbanks, Matthew Moss)*
