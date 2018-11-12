@@ -28,7 +28,7 @@ from bokeh.models.widgets import CheckboxGroup, Tabs
 
 data = pd.read_table('tcga.umap.15.tsv',header=0)
 dataCats = list(str(data['tissue'].unique()))
-
+source=ColumnDataSource(data=data)
 
 def updateSelection(attr, old, new):
     newSelection = [selection.labels[i] for i in selection.active]
@@ -44,10 +44,34 @@ def makePlot(source):
     
     return(p)
 
-source= ColumnDataSource(data=data)
+callback=CustomJS(args=dict(source=source), code="""
+			var data=source.data;
+			var tissue=data['tissue'];
+
+			var pc1=data['comp 0'];
+			var pc2=data['comp 1'];
+
+			var data1=source.data;
+			var f=cb_obj.value;
+
+			var x=[]
+			var y=[];
+
+			for(var i=0;i<pc1.length; i++){
+				if(tissue[i]==f){
+					x.push(pc1[i]);
+					y.push(pc2[i]);
+				}
+			}
+			data1['x']=x;
+			data1['y']=y;
+
+			source.change.emit();
+""")
+
 p = makePlot(source)
 selection = CheckboxGroup(labels=dataCats, active = [1,0])
-selection.on_change('active',updateSelection)
+selection.on_change('active',callback)
 controls=WidgetBox(selection)
 layout = row(controls, p)
 tab = Panel(child=layout, title='test')
