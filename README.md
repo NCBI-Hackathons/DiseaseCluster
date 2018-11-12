@@ -112,11 +112,12 @@ McInnes, L, Healy, J, UMAP: Uniform Manifold Approximation and Projection for Di
 Weinstein JN, Collisson EA, Mills GB, Shaw KM et al. The Cancer Genome Atlas Pan-Cancer Analysis Project. Nat Genet 2013 Oct; 45(10):1113-1120. PMID: [24071849](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3919969/)
 
 ## People/Team
-* **Matthew Moss**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
-* **Meghan Ferrall-Fairbanks**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
-* **Benjamin Harris**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
-* **Gordon Howard Lemmon**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
-* **Yaxin Xue**, University of Bergen, Bergen, Norwary, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **[Matthew Moss](https://github.com/mmoss609)**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
+* **[Meghan Ferrall-Fairbanks](https://github.com/mcfefa)**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
+* **[Benjamin Harris](https://github.com/bharris12)**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
+* **[Gordon Howard Lemmon](https://github.com/glemmon)**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
+* **[Yaxin Xue](ttps://github.com/yxxue)**, University of Bergen, Bergen, Norway, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **[Allissa A. Dillman](https://github.com/allissadillman)**, Genomics Outreach Coordinator at NCBI, Bethesda, MD, USA
 
 ![alt text][team]
 
