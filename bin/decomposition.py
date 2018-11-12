@@ -44,7 +44,12 @@ def parse_args():
         default=False,
         help='Whether to plot 3 components'
     )
-
+    parser.add_argument(
+        '--color',
+        choices=['tissue', 'project'],
+        default='tissue',
+        help='How shall we color?'
+    )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument(
         '--umap_nn',
@@ -99,7 +104,12 @@ def plot_explained_variance(explained_variance, img_prefix):
     plt.savefig(img_prefix+'.explained_var.png')
     plt.clf()
 
-def pca_stuff(data, img_prefix, pca_name, threeD):
+def writeout_components(df, name):
+    df['project'] = data['project']
+    df['tissue'] = data.index.values
+    df.to_csv(name+'.tsv', sep='\t')
+
+def pca_stuff(data, outname, pca_name, threeD, color):
     decomps = {
         'PCA':sk.decomposition.PCA(),
         'KernelPCA':sk.decomposition.KernelPCA(),
@@ -109,22 +119,16 @@ def pca_stuff(data, img_prefix, pca_name, threeD):
     projected = pca.fit_transform(data)
     columns=['comp '+str(i) for i in range(projected.shape[1])]
     df = pd.DataFrame(data=projected, columns=columns)
-    df['tissue'] = data.index.values
-    pca_name = img_prefix+'.'+pca_name
-    df.to_csv(pca_name+'.tsv', sep='\t')
-    plot_projection(df, pca_name, threeD)
-    plot_explained_variance(pca.explained_variance_ratio_, pca_name)
+    plot_projection(df, outname, threeD, color)
+    plot_explained_variance(pca.explained_variance_ratio_, outname)
  
-def umap_stuff(data, img_prefix, nn, threeD):
+def umap_stuff(data, outname, nn, threeD, color):
     ncomps = 3 if threeD else 2
     embedding = umap.UMAP(n_neighbors=nn, min_dist=0.0, metric='correlation', n_components=ncomps)
     projected = embedding.fit_transform(data)
     columns=['comp '+str(i) for i in range(projected.shape[1])]
     df = pd.DataFrame(data=projected, columns=columns)
-    df['tissue'] = data.index.values
-    outname='.'.join([img_prefix,'umap',str(nn)])
-    df.to_csv(outname+'.tsv', sep='\t')
-    plot_projection(df, outname, threeD)
+    plot_projection(df, outname, threeD, color)
 
 def parse_projects(project_fh):
     data = pd.read_table( project_fh, index_col=0 )
@@ -143,13 +147,15 @@ def main():
     data.apply(np.log1p)
     projects = parse_projects(args.project)
     tissues = parse_tissue_map(args.tissue_map)
-    data.index = [projects[i] for i in data.index]
-    data.index = [tissues[i] for i in data.index]
-    #data = data.drop(data.columns[0],axis=1)
     if args.pca:
-        pca_stuff(data, args.image_prefix, args.pca, args.threeD) 
+        outname='.'.join([args.image_prefix,args.pca])
+        df = pca_stuff(data, outname, args.pca, args.threeD, args.color) 
     else:
-        umap_stuff(data, args.image_prefix, args.umap_nn, args.threeD)
+        outname='.'.join([args.image_prefix,'umap',str(args.umap_nn)])
+        df = umap_stuff(data, outname, args.umap_nn, args.threeD, args.color)
+    df['project'] = [projects[i] for i in data.index]
+    df['tissue'] = [tissues[i] for i in df['project']]
+    writeout_components(df, name)
 
 if __name__ == '__main__':
     main()
