@@ -61,6 +61,13 @@ Researchers and clinicians can input new RNAseq disease samples.  The pipeline a
 
 ## Exploration and Validation
 
+#### Pseudo-bulk RNA-seq Test
+Goal: Project new patient/sample information on the disease space to see where that sample would cluster. However, many new experiments utilize single cell RNA-sequencing (scRNAseq), so we need to convert this data to pseudo-bulk RNA-seq for comparison in our pipeline.
+
+Here we take scRNAseq from 6 different triple negative breast cancer (TNBC) patients, convert to pseudobulk data by comparing a few different mean calculations of the single cell RNAseq counts per person, then see how/where these individual patients cluster in the overall disease space. 
+
+The code to create the pseudo-bulk RNA-seq was written in Julia and is available in the Jupyter Notebook [here](https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/Pseduo-bulk-from-scRNAseq.ipynb). The dataset was the TPM dataset available from GEO assession number [GSE118389](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE118389). This dataset contains single cell RNA sequencing of 1,534 cells from six fresh triple negative breast cancer tumors. The jupyter notebook divides the overall dataset up by patient, then calculates the (1) arithmetic mean, (2) geometric mean, (3) harmonic mean, (4) power mean, and (5) naive summation over counts, to achieve a pseudo-bulk characterization to describe the single cells for an individual patient. For the geometic and harmonic means, only cells with positive TPM values were used in the mean calculation. Finally, the pseudo-bulk RNA-seq can be saved using the savedata() function in the notebook, which could then be imported into the pipeline. 
+
 ## F.A.Q. 
 1. How to cite? 
 
@@ -74,9 +81,9 @@ Feel free to contact authors if you need help.
 
 ## References
 
-McInnes, L, Healy, J, UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction, ArXiv e-prints 1802.03426, 2018
-
 Karaayvaz M, Cristea S, Gillespie SM, Patel AP et al. Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq. Nat Commun 2018 Sep 4;9(1):3588. PMID: [30181541](https://www.ncbi.nlm.nih.gov/pubmed/30181541)
+
+McInnes, L, Healy, J, UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction, [ArXiv e-prints 1802.03426](https://arxiv.org/abs/1802.03426), 2018
 
 ## People/Team
 * **Matthew Moss**, CSHL, Cold Spring Harbor, NY, USA, [moss@cshl.edu](mailto:moss@cshl.edu) 
