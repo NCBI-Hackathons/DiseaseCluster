@@ -67,12 +67,12 @@ def plot_3d(projected, img_prefix):
     fig = plt.figure()
     fig.set_size_inches(10,6)
     ax = fig.add_subplot(111, projection='3d')
-    labels = list(set(projected['tissue']))
+    labels = list(set(projected['color']))
     colors = sns.color_palette("husl", len(labels))
     color_dict = dict(zip(labels, colors))
     my_cmap = ListedColormap(colors)
-    color_column = [ color_dict[label] for label in projected['tissue'] ]
-    ax1 = ax.scatter(   
+    color_column = [ color_dict[label] for label in projected['color'] ]
+    ax.scatter(   
             projected['comp 0'],
             projected['comp 1'],
             projected['comp 2'],
@@ -85,13 +85,14 @@ def plot_3d(projected, img_prefix):
     cbar.set_ticks(list(range(len(labels))))
     cbar.set_ticklabels(labels)
     ax.set_zlabel('component 3')
+    return ax
 
 def plot_projection(projected, img_prefix, threeD):
     if threeD:
-        plot_3d(projected, img_prefix)
+        ax = plot_3d(projected, img_prefix)
     else:
         fig, ax = plt.subplots(figsize=(10,6))
-        sns.scatterplot(ax=ax, data = projected, x = 'comp 0', y = 'comp 1', hue='tissue')
+        sns.scatterplot(ax=ax, data = projected, x = 'comp 0', y = 'comp 1', hue='color')
     ax.set_xlabel('component 1')
     ax.set_ylabel('component 2')
     plt.savefig(img_prefix+'.png', dpi=300)
@@ -104,11 +105,6 @@ def plot_explained_variance(explained_variance, img_prefix):
     plt.savefig(img_prefix+'.explained_var.png')
     plt.clf()
 
-def writeout_components(df, name):
-    df['project'] = data['project']
-    df['tissue'] = data.index.values
-    df.to_csv(name+'.tsv', sep='\t')
-
 def pca_stuff(data, outname, pca_name, threeD, color):
     decomps = {
         'PCA':sk.decomposition.PCA(),
@@ -119,8 +115,10 @@ def pca_stuff(data, outname, pca_name, threeD, color):
     projected = pca.fit_transform(data)
     columns=['comp '+str(i) for i in range(projected.shape[1])]
     df = pd.DataFrame(data=projected, columns=columns)
-    plot_projection(df, outname, threeD, color)
+    df['color']=color
+    plot_projection(df, outname, threeD)
     plot_explained_variance(pca.explained_variance_ratio_, outname)
+    return df
  
 def umap_stuff(data, outname, nn, threeD, color):
     ncomps = 3 if threeD else 2
@@ -128,7 +126,9 @@ def umap_stuff(data, outname, nn, threeD, color):
     projected = embedding.fit_transform(data)
     columns=['comp '+str(i) for i in range(projected.shape[1])]
     df = pd.DataFrame(data=projected, columns=columns)
-    plot_projection(df, outname, threeD, color)
+    df['color']=color
+    plot_projection(df, outname, threeD)
+    return df
 
 def parse_projects(project_fh):
     data = pd.read_table( project_fh, index_col=0 )
@@ -147,15 +147,19 @@ def main():
     data.apply(np.log1p)
     projects = parse_projects(args.project)
     tissues = parse_tissue_map(args.tissue_map)
+    projects = [projects[i] for i in data.index]
+    tissues = [tissues[i] for i in projects]
+    colors = tissues if args.color == 'tissue' else projects
     if args.pca:
         outname='.'.join([args.image_prefix,args.pca])
-        df = pca_stuff(data, outname, args.pca, args.threeD, args.color) 
+        df = pca_stuff(data, outname, args.pca, args.threeD, colors) 
     else:
         outname='.'.join([args.image_prefix,'umap',str(args.umap_nn)])
-        df = umap_stuff(data, outname, args.umap_nn, args.threeD, args.color)
-    df['project'] = [projects[i] for i in data.index]
-    df['tissue'] = [tissues[i] for i in df['project']]
-    writeout_components(df, name)
+        df = umap_stuff(data, outname, args.umap_nn, args.threeD, colors)
+    df = df.drop(columns=['color'])
+    df['project'] = projects
+    df['tissue'] = tissues
+    df.to_csv(outname+'.tsv', sep='\t')
 
 if __name__ == '__main__':
     main()
