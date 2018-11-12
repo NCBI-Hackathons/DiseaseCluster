@@ -116,7 +116,7 @@ Weinstein JN, Collisson EA, Mills GB, Shaw KM et al. The Cancer Genome Atlas Pan
 * **[Meghan Ferrall-Fairbanks](https://github.com/mcfefa)**, Moffitt Cancer Center and Research Institute, Tampa, FL, USA, [meghan.ferrall-fairbanks@moffitt.org](mailto:meghan.ferrall-fairbanks@moffitt.org) 
 * **[Benjamin Harris](https://github.com/bharris12)**, CSHL, Cold Spring Harbor, NY, USA, [bharris@cshl.edu](mailto:bharris@cshl.edu)
 * **[Gordon Howard Lemmon](https://github.com/glemmon)**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
-* **[Yaxin Xue](ttps://github.com/yxxue)**, University of Bergen, Bergen, Norway, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
+* **[Yaxin Xue](https://github.com/yxxue)**, University of Bergen, Bergen, Norway, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
 * **[Allissa A. Dillman](https://github.com/allissadillman)**, Genomics Outreach Coordinator at NCBI, Bethesda, MD, USA
 
 ![alt text][team]
