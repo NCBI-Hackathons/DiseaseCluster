@@ -9,7 +9,7 @@ import random
 import pandas as pd
 from bokeh.io import  curdoc
 from bokeh.models import ColumnDataSource, Panel, HoverTool
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import row, WidgetBox
 from bokeh.models.widgets import CheckboxGroup, Tabs
 
@@ -27,7 +27,7 @@ from bokeh.models.widgets import CheckboxGroup, Tabs
 #dataCats = list(str(data['cat'].unique()))
 
 data = pd.read_table('tcga.umap.15.tsv',header=0)
-dataCats = list(str(data['tissue'].unique()))
+dataCats = list(data['tissue'].unique())
 source=ColumnDataSource(data=data)
 
 def updateSelection(attr, old, new):
@@ -77,8 +77,8 @@ layout = row(controls, p)
 tab = Panel(child=layout, title='test')
 tabs=Tabs(tabs=[tab])
 
-curdoc().add_root(tabs)
-#show(tabs)
+#curdoc().add_root(tabs)
+show(tabs)
 
 
 
