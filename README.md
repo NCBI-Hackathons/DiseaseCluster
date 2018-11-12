@@ -41,7 +41,7 @@ Exploratory analysis of converting single cell RNA-seq data to pseudo-bulk RNA-s
 
 ![alt text][pipeline]
 
-[pipeline]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/PipelineFig2.png "DiseaseCluster Workflow"
+[pipeline]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/PipelineFig3.png "DiseaseCluster Workflow"
 
 The DiseaseCluster pipeline workflow is described in the figure above. First, TCGA transcriptomic data was downloaded and additional bulk RNA-seq data will be added to expand disease types analyzed. Data was converted from FPKM to TPM, non-protein coding genes were removed and the data was log transformed. UMAP (uniform manifold approximation and projection) was performed on the expression matrix to reduce the dimensionality to two dimensions in latent space based on gene expression. Clustered data was then overlaid with annotated information about the disease state, including known variants. This map is then visualized by a boken interactive user interface.
 
