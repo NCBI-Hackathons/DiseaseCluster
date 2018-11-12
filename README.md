@@ -118,4 +118,6 @@ Weinstein JN, Collisson EA, Mills GB, Shaw KM et al. The Cancer Genome Atlas Pan
 * **Gordon Howard Lemmon**, University of Utah, Salt Lake City, UT, USA, [gordon.lemmon@utah.edu](mailto:gordon.lemmon@utah.edu)
 * **Yaxin Xue**, University of Bergen, Bergen, Norwary, [yaxin.xue@uib.no](mailto:yaxin.xue@uib.no)
 
+![alt text][team]
 
+[team]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/DC-Team.jpg "DiseaseCluster hackathon team"
