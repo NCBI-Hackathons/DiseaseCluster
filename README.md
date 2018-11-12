@@ -121,3 +121,5 @@ Weinstein JN, Collisson EA, Mills GB, Shaw KM et al. The Cancer Genome Atlas Pan
 ![alt text][team]
 
 [team]:https://github.com/NCBI-Hackathons/DiseaseCluster/blob/master/DC-Team.jpg "DiseaseCluster hackathon team"
+
+*(left to right, Ben Harris, Gordon Howard Lemmon, Yaxin Xue, Meghan Ferrall-Fairbanks, Matthew Moss)*
