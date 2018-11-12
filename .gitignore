@@ -1,1 +1,3 @@
 data
+bin/.ipynb_checkpoints/
+bin/test_notebook.ipynb
